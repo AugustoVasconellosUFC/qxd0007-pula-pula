@@ -158,17 +158,30 @@ public class testPulaPula {
     }
 
     @Test
-    public void testPaipaiChamouCriancaEPagouAConta(){
+    public void testPaipaiChamouCriancaPulandoEPagouAConta(){
         PulaPula pulaPula = new PulaPula(1);
         pulaPula.entrarNaFila(new Crianca("Eduardo", 7));
         assertTrue(pulaPula.entrar(),
-            "Se o limite do pula-pula não foi alcançado, deve ser possível entrar no pula-pula.");
+                "Se o limite do pula-pula não foi alcançado, deve ser possível entrar no pula-pula.");
         assertTrue(pulaPula.sair(),
-            "Se houve crianca no pula-pula, deve ser possível a crianca sair do pula-pula.");
+                "Se houver crianca no pula-pula, deve ser possível a crianca sair do pula-pula.");
         pulaPula.entrar();
         pulaPula.papaiChegou("Eduardo");
         assertEquals(5.00, pulaPula.getCaixa(),
-            "Quando um crianca vai embora, o seu pai deve pagar a conta e o dinheiro vai direto para o caixa.");
+                "Quando um crianca vai embora, o seu pai deve pagar a conta e o dinheiro vai direto para o caixa.");
+    }
+
+    @Test
+    public void testPaipaiChamouCriancaNaFilaEPagouAConta(){
+        PulaPula pulaPula = new PulaPula(1);
+        pulaPula.entrarNaFila(new Crianca("Eduardo", 7));
+        assertTrue(pulaPula.entrar(),
+                "Se o limite do pula-pula não foi alcançado, deve ser possível entrar no pula-pula.");
+        assertTrue(pulaPula.sair(),
+                "Se houver crianca no pula-pula, deve ser possível a crianca sair do pula-pula.");
+        pulaPula.papaiChegou("Eduardo");
+        assertEquals(2.50, pulaPula.getCaixa(),
+                "Quando um crianca vai embora, o seu pai deve pagar a conta e o dinheiro vai direto para o caixa.");
     }
 
     @Test
